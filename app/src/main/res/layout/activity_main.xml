@@ -30,11 +30,11 @@
 
         <!--        Number field -->
 
-        <EditText
+        <TextView
+            android:id="@+id/numberField"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:inputType="number|numberDecimal"
-            android:text="0"
+            android:textAlignment="textEnd"
             android:textColor="@color/cardview_dark_background"
             android:textSize="100dp" />
 

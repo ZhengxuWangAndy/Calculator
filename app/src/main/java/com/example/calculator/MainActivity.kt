@@ -1,10 +1,12 @@
 package com.example.calculator
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +43,9 @@ class MainActivity : AppCompatActivity() {
             findViewById<Button>(id).setOnClickListener {
                 handleOperation(operation)
             }
+        }
+        findViewById<Button>(R.id.sqrt).setOnClickListener {
+            calculateSqrt()
         }
 
         findViewById<Button>(R.id.equal).setOnClickListener {
@@ -88,6 +93,17 @@ class MainActivity : AppCompatActivity() {
                 currentOperation = null
                 return
             }
+        }
+    }
+
+    private fun calculateSqrt() {
+        val currentValue = numberField.text.toString().toDoubleOrNull()
+        if (currentValue != null && currentValue >= 0) {
+            accumulatedValue = sqrt(currentValue)
+            displayResult(accumulatedValue)
+            currentOperation = null
+        } else {
+            numberField.text = "Error"
         }
     }
 
